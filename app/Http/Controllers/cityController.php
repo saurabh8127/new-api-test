@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class cityController extends Controller
 {
-   
+   //insert 
     public function addData (Request $request){
       // Validate
       $this->validate($request, [
         'name'      => 'required|string|alpha_dash|max:255|min:4',
        ]);
        
-//get user details
+     //get user details
       $user=City::create([
         'name'      => $request->name,         
-        ]);
+      ]);
 
         // Success Response
         return response()->json(array(
@@ -32,7 +32,7 @@ class cityController extends Controller
     public function getData(){
       return City::all();
       return response()->json(array('message' => array('All table data.')));
-     }
+    }
 
      // delete data
      public function deleteData($id){
@@ -43,9 +43,9 @@ class cityController extends Controller
      //update
      public function updateData(Request $request){
 
-      // return ["status"=>"upadate"];
-      // dd($request->name);
-       // Validate
+        // return ["status"=>"upadate"];
+        // dd($request->name);
+        // Validate
        $this->validate($request, [
         'name'      => 'required|string|alpha_dash|max:255|min:4',
        ]); 
@@ -59,7 +59,7 @@ class cityController extends Controller
       }
      }
 
-
+     //search data
      public function searchData($name){
       //  dd($name);
        return City::where("name",$name)->get();
